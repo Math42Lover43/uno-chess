@@ -1,0 +1,58 @@
+<!--
+There should be a game called UNO Chess: 1. To setup, each player flips 16 cards faceup in a 4 * 4 grid in front of them. 2. The first player discards any card in their grid to the center to form a discard pile. 3. After the first player plays a card, the player to their left must match that card just like in regular UNO, but that card must be of equal or higher value. Play proceeds clockwise. 4. The last player to be able to play a card in that manner to the discard pile collects all those cards and sets them aside (not in their grid). 5. Whenever you don't have a playable card, you don't draw a replacement card, but the round ends instead. 6. After the last player to play in a round collects the discard pile, the player after them does not replenish their grid but starts a new round by laying a new first card from their grid of any value. 7. If you are the only player to play in a round because the next player cannot match to your card, then you keep that card in your grid and the next player initiates a round. 8. If you get down to having only one card in your grid, you must say UNO! If you don't and another player catches you, every other player adds two cards from the draw pile to their grid, capped at sixteen. 9. If a player cannot initiate a round with one of their remaining cards because the next player cannot match to any of them, then they play nothing. 10. The game ends once one player exhausts their grid or once all possible plays have been made. Each player scores the total value of their set-aside cards and if one player exhausted their grid, they score points for the faceup cards in their opponents' grids. The player with the most points wins. Action cards to be discussed in a follow up message
+
+The card must match like in regular UNO but be of higher value. A round with only one card is void and its player keeps the card in their grid with the next player attempting to start a round. You must play a card on your turn if you can. The only way the game can end other than one player playing all of their cards are if all players take a turn and there is no change in grids nor in the direction of play (all possible plays have been made).
+
+Action cards: - Reverse: 10 - Skip: 15 - Drop: 20 - When you play this card, you draw two cards and add them to your grid. - Double play: 25 - When you play this card, all subsequent turns - Fork: 30 - When you play this card, the next player must discard two cards of their choice to the bottom of the current discard pile. - Grand fork: 50 - When you play this card, choose one or two other players. If you pick only one player, that player must remove four cards from their grid and add them to the bottom of the current discard pile. If you pick two players, both of them discard two of their grid cards to the bottom of the discard pile. If an action card is the only card in your round, you do not keep it in your grid, but instead, set it aside and take the action by calling it out. This card scores its value at the end of the game. If an action card is the first card flipped for a round, it affects the first player, who also loses their turn before the second player can make the first play.
+
+Under no circumstances may players exceed the 16-card cap. We need some UNO, so I'm keeping Drop. For Double Play, the total of the two cards played is what must match or exceed the previous total, and that is the total the next player must match or exceed. We need some UNO elements, and Drop, Fork, Castling, and Grand fork do that by mimicking +2 and +4, one of each that is offensive and one that is defensive. Action cards: Reverse (10) Skip (15) Drop (20), Double Play (25), Fork (30), Castling (35), Grand fork (50). Castling: You add five cards to your grid from the draw pile.
+
+Cards discarded due to action cards are chosen freely from the grid by the target. Never will an only target of a grand fork burn more than four cards.
+
++2 and Wild +4 correspond to mild tactics, defenses, and powerful ones in chess. Intermediately: - Drop and Fork - Castling and Grand Fork I'll reconsider the scoring mechanics.
+
+With my new scoring system, when a player cannot match to the discard pile, they take those cards and set them aside associated with them before leading the new round. If an action card is the only card in a round, it does not stay in the grid of its player. Instead, it scores the negation of its face value at the end of the game. New scoring system: - Number cards (0 - 9) - face value - Action cards - stated earlier The game ends when at least one player has exhausted their hand by any legal method or once each player has taken their turn in turn order with no skipping and there has been no change in the cards any player's grid or in the direction of play (all possible plays have been made). Every player scores the total value of their set-aside card stacks, deducting their single set-aside action cards. Then, any players who exhausted all of their cards subtract points equal to the total value of their opponents' grid cards.
+
+The player with the lowest score wins.
+
+The score is the cards set aside in front of you minus any action cards you insularly used, and if you have exhausted all cards, minus the total score of the faceup cards in your opponents' grids. The player with the lowest score at the end wins.
+
+But when an action card is used insularly, it is set aside in front of its player and is out of their grid.
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			UNO Chess
+		</title>
+		<meta charset="utf-8">
+		<style>
+			body {
+				font-family: 'Arial';
+				background-color: rgb(255,235,175);
+			}
+		</style>
+	</head>
+	<body>
+		<svg style="width: 100%; height: 100%;">
+			
+		</svg>
+	</body>
+	<script>
+		var colors = [
+			[255, 0, 0],
+			[255, 225, 0],
+			[0, 225, 0],
+			[0, 85, 255]
+		];
+		function card(color, number, symbol, x, y, faceup, playable) {
+			var card;
+			if(faceup) {
+				card = `<rect x="0" y="0" width="50px" height="50px" fill="linear-gradient(to bottom, rgb(${colors[color][0]}, ${colors[color][1]}, ${colors[color][2]}), rgb(${colors[color][0] * 0.7}, ${colors[color][1] * 0.7}, ${colors[color][2] * 0.7}))"${playable ? ` border="5px solid rgb(${colors[color][0] * 0.5}, ${colors[color][1] * 0.5}, ${colors[color][2] * 0.5})}` : ""}"></rect><text x="25" y="25" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(0, 0, 0, 0.5)">${number}</text><text x="25" y="25" text-anchor="middle" dominant-baseline="middle" font-size="30" fill="white">${symbol}</text>`;
+			} else {
+				card = `<rect x="0" y="0" width="40pt" height="40pt" fill="black"></rect><text x="25" y="25" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(255, 0, 0)">?</text>`;
+			}
+			return `<g transform="translate(${x}, ${y})">${card}</g>`;
+		}
+	</script>
+</html>
