@@ -45,13 +45,25 @@ But when an action card is used insularly, it is set aside in front of its playe
 			[0, 225, 0],
 			[0, 85, 255]
 		];
+		var nts = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "⇄"];
+		nts[15] = "⦸";
+		nts[20] = "+2";
+		nts[25] = "=";
+		nts[30] = "♘";
+		nts[50] = "♚♛";
+		var cards_exist = 0;
+		var turn = 0;
+		var players = []; // {grid} [rounds [{cards}]]
+		var scoring = [];
+		var direction = 1;
 		function card(color, number, symbol, x, y, faceup, playable) {
 			var card;
 			if(faceup) {
-				card = `<rect x="0" y="0" width="50px" height="50px" fill="linear-gradient(to bottom, rgb(${colors[color][0]}, ${colors[color][1]}, ${colors[color][2]}), rgb(${colors[color][0] * 0.7}, ${colors[color][1] * 0.7}, ${colors[color][2] * 0.7}))"${playable ? ` border="5px solid rgb(${colors[color][0] * 0.5}, ${colors[color][1] * 0.5}, ${colors[color][2] * 0.5})}` : ""}"></rect><text x="25" y="25" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(0, 0, 0, 0.5)">${number}</text><text x="25" y="25" text-anchor="middle" dominant-baseline="middle" font-size="30" fill="white">${symbol}</text>`;
+				card = `<rect id="card${cards_exist}" x="0" y="0" width="50px" height="50px" fill="linear-gradient(to bottom, rgb(${colors[color][0]}, ${colors[color][1]}, ${colors[color][2]}), rgb(${colors[color][0] * 0.7}, ${colors[color][1] * 0.7}, ${colors[color][2] * 0.7}))"${playable ? ` border="5px solid rgb(${colors[color][0] * 0.5}, ${colors[color][1] * 0.5}, ${colors[color][2] * 0.5})}` : ""}"></rect><text x="25" y="25" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(0, 0, 0, 0.5)">${number}</text><text x="25" y="25" text-anchor="middle" dominant-baseline="middle" font-size="30" fill="white">${symbol}</text>`;
 			} else {
-				card = `<rect x="0" y="0" width="40pt" height="40pt" fill="black"></rect><text x="25" y="25" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(255, 0, 0)">?</text>`;
+				card = `<rect id="card${cards_exist}" x="0" y="0" width="40pt" height="40pt" fill="black"></rect><text x="25" y="25" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(255, 0, 0)">?</text>`;
 			}
+			cards_exist++;
 			return `<g transform="translate(${x}, ${y})">${card}</g>`;
 		}
 	</script>
