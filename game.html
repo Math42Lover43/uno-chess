@@ -71,7 +71,7 @@ But when an action card is used insularly, it is set aside in front of its playe
 			if(faceup) {
 				card = `<rect id="card${cards_exist}" x="0" y="0" rx="5" ry="5" width="60px" height="60px" fill="url(#color${color})"${playable ? ` border="5px solid rgb(${colors[color][0] * 0.5}, ${colors[color][1] * 0.5}, ${colors[color][2] * 0.5})` : ""}></rect><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(0, 0, 0, 0.5)">${number}</text><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="30" fill="white">${nts[number]}</text>`;
 			} else {
-				card = `<rect id="card${cards_exist}" x="0" y="0" rx="5" ry="5" width="60px" height="60px" fill="black"></rect><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="30" fill="rgba(255, 0, 0)">UNO</text>`;
+				card = `<rect id="card${cards_exist}" x="0" y="0" rx="5" ry="5" width="60px" height="60px" fill="black"></rect><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="20" fill="rgba(255, 0, 0)">UNO</text>`;
 			}
 			cards_exist++;
 			return `<g transform="translate(${x}, ${y})">${card}</g>`;
