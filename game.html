@@ -70,13 +70,13 @@ But when an action card is used insularly, it is set aside in front of its playe
 		function card(color, number, x, y, faceup, playable) {
 			var card;
 			if(faceup) {
-				card = `<rect id="card${cards_exist}" x="0" y="0" rx="5" ry="5" width="60px" height="60px" fill="url(#color${color})"${playable ? ` border="5px solid rgb(${colors[color][0] * 0.5}, ${colors[color][1] * 0.5}, ${colors[color][2] * 0.5})"` : ""}></rect><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(0, 0, 0, 0.5)">${number}</text><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="30" fill="white">${nts[number]}</text>`;
+				card = `<rect id="card${cards_exist}" x="0" y="0" rx="5" ry="5" width="60px" height="60px" fill="url(#color${color})"${playable ? ` stroke="rgb(${colors[color][0] * 0.5}, ${colors[color][1] * 0.5}, ${colors[color][2] * 0.5})" stroke-width="5"` : ""}></rect><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(0, 0, 0, 0.5)">${number}</text><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="30" fill="white">${nts[number]}</text>`;
 			} else {
 				card = `<rect id="card${cards_exist}" x="0" y="0" rx="5" ry="5" width="60px" height="60px" fill="black"></rect><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="20" fill="rgba(255, 0, 0)">UNO</text>`;
 			}
 			cards_exist++;
 			return `<g transform="translate(${x}, ${y})">${card}</g>`;
 		}
-		document.getElementById("game").innerHTML += card(0, 0, 10, 10, false, false) + card(1, 2, 60, 10, true, false) + card(2, 5, 110, 10, true, false) + card(3, 9, 160, 10, true, false) + card(0, 10, 210, 10, true, true) + card(1, 15, 260, 10, true, true) + card(2, 20, 310, 10, true, true) + card(3, 25, 360, 10, true, true) + card(0, 30, 410, 10, true, true) + card(1, 50, 460, 10, true, true) + card(2, 35, 10, 80, false, false);
+		document.getElementById("game").innerHTML += card(0, 0, 10, 10, false, false) + card(1, 2, 60, 10, true, false) + card(2, 5, 110, 10, true, false) + card(3, 9, 160, 10, true, false) + card(0, 10, 210, 10, true, true) + card(1, 15, 260, 10, true, true) + card(2, 20, 310, 10, true, true) + card(3, 25, 360, 10, true, true) + card(0, 30, 410, 10, true, true) + card(1, 50, 460, 10, true, true) + card(2, 35, 10, 80, true, false);
 	</script>
 </html>
