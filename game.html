@@ -71,7 +71,6 @@ But when an action card is used insularly, it is set aside in front of its playe
 		function card(color, number, x, y, faceup, playable) {
 			var card;
 			card = `<span id="show${number}" style="display: ${faceup ? "" : "none"}"><rect x="0" y="0" rx="5" ry="5" width="60px" height="60px" fill="url(#color${color})"${playable ? ` stroke="rgb(${colors[color][0] * 0.3}, ${colors[color][1] * 0.3}, ${colors[color][2] * 0.3})" stroke-width="5"` : ""}></rect><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="40" fill="rgba(0, 0, 0, 0.5)">${number}</text><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="30" fill="white">${nts[number]}</text></span><span id="hide${number}" style="display: ${faceup ? "none" : ""}"><rect x="0" y="0" rx="5" ry="5" width="60px" height="60px" fill="black"></rect><text x="30" y="30" text-anchor="middle" dominant-baseline="middle" font-size="20" fill="rgba(255, 0, 0)">UNO</text></span>`;
-			}
 			cards_exist++;
 			return `<g transform="translate(${x}, ${y})" id="card${cards_exist}">${card}</g>`;
 		}
