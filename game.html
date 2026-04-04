@@ -79,7 +79,7 @@ But when an action card is used insularly, it is set aside in front of its playe
 		setInterval(function() {
 			if(transposes.length) {
 				for(let trans = 0; trans < trans.length; trans++) {
-					document.getElementById(transposes[trans].card).transform = `translate(${Math.round(transposes[trans].x + 0.4 * (document.getElementById(transposes[trans].card).transform.slice(10, document.getElementById(transposes[trans].card).transform.indexOf(",")) - transposes[trans].x))}, ${Math.round(transposes[trans].y + 0.4 * (document.getElementById(transposes[trans].card).transform.slice(document.getElementById(transposes[trans].card).transform.indexOf(",") + 2, document.getElementById(transposes[trans].card).transform.length - 1) - transposes[trans].y))})`;
+					document.getElementById("card" + transposes[trans].card).transform = `translate(${Math.round(transposes[trans].x + 0.4 * (document.getElementById("card" + transposes[trans].card).transform.slice(10, document.getElementById("card" + transposes[trans].card).transform.indexOf(",")) - transposes[trans].x))}, ${Math.round(transposes[trans].y + 0.4 * (document.getElementById("card" + transposes[trans].card).transform.slice(document.getElementById("card" + transposes[trans].card).transform.indexOf(",") + 2, document.getElementById("card" + transposes[trans].card).transform.length - 1) - transposes[trans].y))})`;
 				}
 			}
 		})
