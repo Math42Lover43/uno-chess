@@ -75,7 +75,7 @@ But when an action card is used insularly, it is set aside in front of its playe
 			return `<g transform="translate(${x}, ${y})" id="card${cards_exist}">${card}</g>`;
 		}
 		document.getElementById("game").innerHTML += card(0, 0, 10, 10, false, false) + card(1, 2, 60, 10, true, false) + card(2, 5, 110, 10, true, false) + card(3, 9, 160, 10, true, false) + card(0, 10, 210, 10, true, true) + card(1, 15, 260, 10, true, true) + card(2, 20, 310, 10, true, true) + card(3, 25, 360, 10, true, true) + card(0, 30, 410, 10, true, true) + card(1, 50, 460, 10, true, true) + card(2, 35, 10, 80, true, false);
-		transposes.push({"card": 0, "x": 250, "y": 250, "face": true});
+		transposes.push({"card": 1, "x": 250, "y": 250, "face": true});
 		setInterval(function() {
 			if(transposes.length) {
 				for(let trans = 0; trans < trans.length; trans++) {
